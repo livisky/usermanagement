@@ -1,22 +1,34 @@
 
 application created by [ThinkJS](http://www.thinkjs.org)
 
-## install dependencies
+## 安装依赖包
 
 ```
 npm install
 ```
 
-## start server
+## 编译thinkjs项目
 
 ```
-npm start
+npm run compile
 ```
 
-## deploy with pm2
-
-use pm2 to deploy app on production envrioment.
+## 启动项目
 
 ```
-pm2 startOrReload pm2.json
+npm run start
+```
+## 导入根目录下数据库文件test.sql
+
+在src/common/config/db.js里配置数据库信息
+```
+mysql: {
+      host: '127.0.0.1',
+      port: '3306',
+      database: 'test',
+      user: 'root',
+      password: 'root',
+      prefix: 'li_',
+      encoding: 'utf8'
+    }
 ```
