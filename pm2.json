@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "d:studyThinkjslivi_blogd:studyThinkjslivi_blogblog",
+    "script": "www/production.js",
+    "cwd": "d:\study\Thinkjs\livi_blog/d:\study\Thinkjs\livi_blog\blog",
+    "exec_mode": "cluster",
+    "instances": 0,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

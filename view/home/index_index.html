@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <%include inc/header.html%>
+    <script src="<%=_web.url%>static/src/js/widget/angular/jquery-1.9.1.min.js"></script>
+    <script src="<%=_web.url%>static/src/js/widget/angular/angular-1.4.6.min.js"></script> 
+    <script src="<%=_web.url%>static/src/js/widget/angular/bootstrap.min.js"></script>
+    <script src="<%=_web.url%>static/src/js/widget/angular/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="<%=_web.url%>static/src/js/business/user/user.js"></script>
+    <link rel="stylesheet" href="<%=_web.url%>/static/vendors/bootstrap-3.3.5/css/bootstrap.min.css">
+    <title><%=title%></title>
+    <!-- Default panel contents -->
+<body>
+    <!-- Table -->
+    <div class="main" style="width:80%;margin:0 auto;margin-top:100px;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">新建用户</button>
+        <div style="border:1px solid #ccc;border-radius: 4px;">
+            <table class="table table-striped">
+                <thead>
+                    <th>用户名</th>
+                    <th>年龄</th>
+                    <th>操作</th>
+                </thead>
+                <tbody>
+                    <% nameList.forEach(function(item){%>
+                    <tr class="infoEdit" ng-controller="editCrl">
+                        <td><%=item.name%></td>
+                        <td><%=item.age%></td>
+                        <td>
+                            <a class="edit" style="cursor: pointer;" ng-click="doEdit()" data-toggle="modal" data-target="#myModal">编辑</a>
+                            <a class="delete" style="cursor: pointer;" ng-click="delUser($event)">删除</a>
+                            <input type="hidden" value="<%=item.id%>" id="uid">
+                            <edituser ng-show="isShow" user="userList" save="saveEdit()"></edituser>
+                        </td>
+                    </tr>
+                    <% })%>
+                </tbody>
+            </table>           
+            </div>
+             <nav style="float:right">
+                <ul class="pagination">
+                    <li class="<%=preclass%>">
+                    <a href="<%=prelink%>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>   
+                     <% for(var i=1;i<=pageData.totalPages;i++){%>
+                        <li class="<%=pageData.currentPage===i?'active':''%>"><a href="?page=<%=i%>&pagesize=<%=pageData.numsPerPage%>"><%=i%></a></li>                  
+                     <%}%>
+                    <li class="<%=nextclass%>">
+                        <a href="<%=nextlink%>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav> 
+            <div class="main">
+                    <div>
+                        <div class="editform" ng-controller="myCtrl">
+                            <userform></userform>
+                        </div>
+                    </div>        
+            </div>        
+        </div>
+        <script>
+            $(function(){
+                // $.ajax(
+                //     {
+                //         url:'http://localhost:8361/index/getpage',
+                //         data:{id:1},
+                //         success:function(json){
+                //             debugger
+                //         }
+                //     }
+                //  )
+            })
+        </script>
+</body>
+</html>
