@@ -3,6 +3,8 @@ application created by [ThinkJS](http://www.thinkjs.org)
 
 本项目只做教程演示及初学者入门之用
 
+![image](https://raw.githubusercontent.com/livisky/usermanagement/master/demo.png)
+
 ## 安装依赖包
 
 ```
